@@ -6,8 +6,20 @@ using System.Threading.Tasks;
 
 namespace CustomerMaintenance
 {
-    public class Customer
+
+    public class Customer: ICloneable
 	{
+      
+        public object Clone()
+        {
+            Customer c = new Customer();
+            c.FirstName = this.FirstName;
+            c.LastName = this.LastName;
+            c.Email = this.Email;
+            return c;
+        }
+
+
 		private string firstName;
 		private string lastName;
 		private string email;
@@ -74,7 +86,12 @@ namespace CustomerMaintenance
 			}
 		}
 
-		public string GetDisplayText()
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetDisplayText()
 		{
 			return firstName + " " + lastName + ", " + email;
 		}
