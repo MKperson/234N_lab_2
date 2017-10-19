@@ -17,14 +17,24 @@ namespace CustomerMaintenance
             InitializeComponent();
         }
 
+        private void SaveAndUpdate(CustomerList list)
+        {
+            list.Save();
+            FillCustomerListBox();
+        }
         private CustomerList customers = new CustomerList();
 
         private void frmCustomers_Load(object sender, EventArgs e)
         {
             // register the event and it's delegate here
-
+            customers.hasBeenEdited += new CustomerList.EditedHandiler(SaveAndUpdate);
             customers.Fill();
             FillCustomerListBox();
+        }
+
+        private void Customers_hasBeenEdited(CustomerList customers)
+        {
+            throw new NotImplementedException();
         }
 
         private void FillCustomerListBox()

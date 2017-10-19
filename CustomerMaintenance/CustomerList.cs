@@ -11,6 +11,8 @@ namespace CustomerMaintenance
 		private List<Customer> customers;
 
         // declare the delegate and then the event here
+        public delegate void EditedHandiler(CustomerList customers);
+        public event EditedHandiler hasBeenEdited;
 
 		public CustomerList()
 		{
@@ -34,7 +36,8 @@ namespace CustomerMaintenance
 			set
 			{
 				customers[i] = value;
-				//raise the event here
+                //raise the event here
+                hasBeenEdited(this);
 			}
 		}
 
@@ -51,14 +54,16 @@ namespace CustomerMaintenance
 		public void Add(Customer customer)
 		{
 			customers.Add(customer);
-			// raise the event here
-		}
+            // raise the event here
+            hasBeenEdited(this);
+        }
 
 		public void Remove(Customer customer)
 		{
 			customers.Remove(customer);
-			// raise the event here
-		}
+            // raise the event here
+            hasBeenEdited(this);
+        }
 
 		public static CustomerList operator + (CustomerList c1, Customer c)
 		{

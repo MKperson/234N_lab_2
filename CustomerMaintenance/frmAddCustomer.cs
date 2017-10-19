@@ -16,7 +16,7 @@ namespace CustomerMaintenance
         {
             InitializeComponent();
         }
-
+        
         private Customer customer = null;
 
         public Customer GetNewCustomer()

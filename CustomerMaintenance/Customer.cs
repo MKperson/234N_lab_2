@@ -86,11 +86,11 @@ namespace CustomerMaintenance
 			}
 		}
 
-        public object Clone()
+        /*public object Clone()
         {
             throw new NotImplementedException();
         }
-
+        */
         public string GetDisplayText()
 		{
 			return firstName + " " + lastName + ", " + email;
