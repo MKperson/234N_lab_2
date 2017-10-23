@@ -7,26 +7,24 @@ using NUnit.Framework;
 
 namespace CustomerMaintenance
 {
-    
-
     [TestFixture]
-    class ClassTests
+    internal class ClassTests
     {
-        Customer c;
+        private Customer c;
         private const string FNAME = "firstname";
         private const string LNAME = "lastname";
         private const string EMAIL = "email";
+
         [SetUp]
         public void SetUp()
         {
-            c = new Customer(FNAME,LNAME,EMAIL);
-
+            c = new Customer(FNAME, LNAME, EMAIL);
         }
 
         [Test]
         public void TestClone()
         {
-           
+            Assert.AreSame(c, c.Clone());
         }
     }
 }
